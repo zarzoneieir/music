@@ -7,6 +7,8 @@ import config
 
 intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix=",", intents=intents)
+guild = disnake.utils.get(bot.guilds, id=1246810383000404019)
+news_channel = disnake.utils.get(guild.text_channels, id=1246810383956578336)
 
 # Play Music
 @bot.slash_command()
@@ -111,7 +113,7 @@ async def partner(ctx, member: disnake.Member):
     role = disnake.utils.get(ctx.guild.roles, id=1246810383034093670)
     if role:
         await member.add_roles(role)
-        await ctx.send(f"{member.mention}, теперь ты партнер!")
+        await news_channel.send(f"{member.mention}, теперь ты партнер!")
     else:
         await ctx.send("Роль партнера не найдена!")
 
@@ -120,7 +122,7 @@ async def unpartner(ctx, member: disnake.Member):
     role = disnake.utils.get(ctx.guild.roles, id=1246810383034093670)
     if role:
         await member.remove_roles(role)
-        await ctx.send(f"{member.mention}, теперь ты не партнер!")
+        await news_channel.send(f"{member.mention}, теперь ты не партнер!")
     else:
         await ctx.send("Роль партнера не найдена!")
 
