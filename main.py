@@ -22,11 +22,11 @@ async def play(ctx, url: str):
 
     # Проверка на "m" и "f" в URL
     if 'm' in url:
-        mp3_path = "D:\\Python\\dtio\\mn\\downloads\\mazelov.mp3"
+        mp3_path = "D:\\Python\\dtio\\music\\downloads\\mazelov.mp3"
     elif 'f' in url:
-        mp3_path = "D:\\Python\\dtio\\mn\\downloads\\fimozik.mp3"
+        mp3_path = "D:\\Python\\dtio\\music\\downloads\\fimozik.mp3"
     elif 'sdeti' in url:
-        mp3_path = "D:\\Python\\dtio\\mn\\downloads\\sdeti.mp3"
+        mp3_path = "D:\\Python\\dtio\\music\\downloads\\sdeti.mp3"
     else:
         mp3_path = f"downloads/{url.split('/')[-1]}.mp3"
 
@@ -59,7 +59,7 @@ async def timur_huesos(ctx):
     if voice_client.is_playing():
         return await ctx.send("Бот уже что-то воспроизводит!")
 
-    mp3_path = "D:\\Python\\dtio\\mn\\downloads\\huesos.mp3"
+    mp3_path = "D:\\Python\\dtio\\music\\downloads\\huesos.mp3"
 
     if not os.path.exists(mp3_path):
         await ctx.send("Не удалось найти аудио файл.")
@@ -82,7 +82,7 @@ async def bbw(ctx):
     if voice_client.is_playing():
         return await ctx.send("Бот уже что-то воспроизводит!")
 
-    mp3_path = "D:\\Python\\dtio\\mn\\downloads\\bbv.mp3"
+    mp3_path = "D:\\Python\\dtio\\music\\downloads\\bbv.mp3"
 
     if not os.path.exists(mp3_path):
         await ctx.send("Не удалось найти аудио файл.")
