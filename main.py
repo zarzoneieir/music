@@ -3,8 +3,7 @@ from disnake.ext import commands
 import os
 import asyncio
 import random
-
-TOKEN = "MTM0Mjk5OTU4NDM2MzkwNTEwNA.G3_60X.hJep9BrpF_kZ-zofT_I7hSxrEd9tl21wRgp5Dw"
+import config
 
 intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix=",", intents=intents)
@@ -273,4 +272,4 @@ async def helpan(ctx):
     await ctx.send(help_text)
 
 
-bot.run(TOKEN)
+bot.run(config.TOKEN)
