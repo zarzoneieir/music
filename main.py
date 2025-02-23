@@ -33,8 +33,9 @@ async def play(ctx, url: str):
         await ctx.send("Не удалось найти аудио файл.")
         return
 
+    await ctx.response.defer()
     voice_client.play(disnake.FFmpegPCMAudio(mp3_path), after=lambda e: print(f"Завершено: {e}"))
-    await ctx.send("🎶 Воспроизведение начато!")
+    await ctx.edit_original_response(content="🎶 Воспроизведение начато!")
 
 # Stop Music
 @bot.slash_command()
@@ -61,8 +62,9 @@ async def timur_huesos(ctx):
         await ctx.send("Не удалось найти аудио файл.")
         return
 
+    await ctx.response.defer()
     voice_client.play(disnake.FFmpegPCMAudio(mp3_path), after=lambda e: print(f"Завершено: {e}"))
-    await ctx.send("🎶 Воспроизведение начато!")
+    await ctx.edit_original_response(content="🎶 Воспроизведение начато!")
 
 # BBW Command
 @bot.slash_command()
@@ -82,8 +84,9 @@ async def bbw(ctx):
         await ctx.send("Не удалось найти аудио файл.")
         return
 
+    await ctx.response.defer()
     voice_client.play(disnake.FFmpegPCMAudio(mp3_path), after=lambda e: print(f"Завершено: {e}"))
-    await ctx.send("🎶 Воспроизведение начато!")
+    await ctx.edit_original_response(content="🎶 Воспроизведение начато!")
 
 # Moderation Commands
 @bot.slash_command()
