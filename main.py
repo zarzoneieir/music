@@ -15,25 +15,31 @@ async def play(ctx, url: str):
         return await ctx.send("Ты должен быть в голосовом канале!")
 
     channel = ctx.author.voice.channel
-    voice_client = ctx.guild.voice_client or await channel.connect()
+    voice_client = ctx.guild.voice_client
+
+    if not voice_client:
+        voice_client = await channel.connect()
+    elif voice_client.channel != channel:
+        return await ctx.send("Бот уже подключен к другому каналу!")
 
     if voice_client.is_playing():
         return await ctx.send("Бот уже что-то воспроизводит!")
 
     if 'm' in url:
-        mp3_path = "D:\\Python\\dtio\\music\\downloads\\mazelov.mp3"
+        mp3_path = "downloads\\mazelov.mp3"
     elif 'f' in url:
-        mp3_path = "D:\\Python\\dtio\\music\\downloads\\fimozik.mp3"
+        mp3_path = "downloads\\fimozik.mp3"
     elif 'sdeti' in url:
-        mp3_path = "D:\\Python\\dtio\\music\\downloads\\sdeti.mp3"
+        mp3_path = "downloads\\sdeti.mp3"
+    elif 'hh' in url:
+        mp3_path = "downloads\\hh.mp3"
     else:
         mp3_path = f"downloads/{url.split('/')[-1]}.mp3"
 
     if not os.path.exists(mp3_path):
-        await ctx.send("Не удалось найти аудио файл.")
-        return
+        return await ctx.send("Не удалось найти аудио файл.")
 
-    await ctx.response.defer()
+    await ctx.response.defer(ephemeral=True)
     voice_client.play(disnake.FFmpegPCMAudio(mp3_path), after=lambda e: print(f"Завершено: {e}"))
     await ctx.edit_original_response(content="🎶 Воспроизведение начато!")
 
@@ -56,13 +62,12 @@ async def timur_huesos(ctx):
     if voice_client.is_playing():
         return await ctx.send("Бот уже что-то воспроизводит!")
 
-    mp3_path = "D:\\Python\\dtio\\music\\downloads\\huesos.mp3"
+    mp3_path = "downloads\\huesos.mp3"
 
     if not os.path.exists(mp3_path):
-        await ctx.send("Не удалось найти аудио файл.")
-        return
+        return await ctx.send("Не удалось найти аудио файл.")
 
-    await ctx.response.defer()
+    await ctx.response.defer(ephemeral=True)
     voice_client.play(disnake.FFmpegPCMAudio(mp3_path), after=lambda e: print(f"Завершено: {e}"))
     await ctx.edit_original_response(content="🎶 Воспроизведение начато!")
 
@@ -78,13 +83,12 @@ async def bbw(ctx):
     if voice_client.is_playing():
         return await ctx.send("Бот уже что-то воспроизводит!")
 
-    mp3_path = "D:\\Python\\dtio\\music\\downloads\\bbv.mp3"
+    mp3_path = "downloads\\bbv.mp3"
 
     if not os.path.exists(mp3_path):
-        await ctx.send("Не удалось найти аудио файл.")
-        return
+        return await ctx.send("Не удалось найти аудио файл.")
 
-    await ctx.response.defer()
+    await ctx.response.defer(ephemeral=True)
     voice_client.play(disnake.FFmpegPCMAudio(mp3_path), after=lambda e: print(f"Завершено: {e}"))
     await ctx.edit_original_response(content="🎶 Воспроизведение начато!")
 
