@@ -7,7 +7,7 @@ import config
 
 intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix=",", intents=intents)
-news_channel = bot.get_channel(id=1246810383956578336)
+news_channel = bot.get_channel(1246810383956578336)
 
 # Play Music
 @bot.slash_command()
